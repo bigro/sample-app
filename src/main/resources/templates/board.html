@@ -10,7 +10,7 @@
 <body>
 
 <div>
-    <p th:text="${message}"></p>
+    <p th:each="message : ${messages}" th:text="${message}"></p>
     <form action="/" method="post">
         <textarea th:name="message" rows="8" cols="100"></textarea>
         <div>
