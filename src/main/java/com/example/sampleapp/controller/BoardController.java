@@ -1,6 +1,7 @@
 package com.example.sampleapp.controller;
 
-import com.example.sampleapp.service.BoardService;
+import com.example.sampleapp.domain.model.Post;
+import com.example.sampleapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,22 +13,22 @@ import java.util.List;
 @Controller
 public class BoardController {
     
-    BoardService boardService;
+    PostService postService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
+    public BoardController(PostService postService) {
+        this.postService = postService;
     }
 
     @GetMapping("/")
     public String show(Model model) {
-        List<String> messages = boardService.allMessages();
-        model.addAttribute("messages", messages);
+        List<Post> posts = postService.allMessages();
+        model.addAttribute("posts", posts);
         return "board";
     }
     
     @PostMapping("/")
     public String post(@RequestParam String message, Model model) {
-        boardService.add(message);
+        postService.add(message);
         
         return "redirect:/";
     }
