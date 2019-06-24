@@ -4,12 +4,18 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Post {
+    String title;
     String message;
     LocalDateTime time;
 
-    public Post(String message, LocalDateTime time) {
+    public Post(String title, String message, LocalDateTime time) {
+        this.title = title;
         this.message = message;
         this.time = time;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getMessage() {

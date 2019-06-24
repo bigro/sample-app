@@ -11,8 +11,8 @@ import java.util.List;
 public class PostService {
     List<Post> posts = new ArrayList<>();
     
-    public void add(String message) {
-        Post post = new Post(message, LocalDateTime.now());
+    public void add(String title, String message) {
+        Post post = new Post(title, message, LocalDateTime.now());
         posts.add(post);
     }
     

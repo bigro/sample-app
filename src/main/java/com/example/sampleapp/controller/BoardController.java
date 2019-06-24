@@ -27,8 +27,8 @@ public class BoardController {
     }
     
     @PostMapping("/")
-    public String post(@RequestParam String message, Model model) {
-        postService.add(message);
+    public String post(@RequestParam String title, @RequestParam String message, Model model) {
+        postService.add(title, message);
         
         return "redirect:/";
     }
