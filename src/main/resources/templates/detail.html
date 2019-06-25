@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>詳細</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div>
+    <h2 th:text="${post.getTitle()}"></h2>
+    <pre th:text="${post.getMessage()}"></pre>
+
+    <p th:text="${post.getTimeAsText()}"></p>
+</div>
+
+</body>
+
+</html>

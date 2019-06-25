@@ -11,14 +11,17 @@
 
 <div>
     <div th:each="post : ${posts}">
-        <p th:text="${post.getTitle()}"></p>
-        <p th:text="${post.getMessage()}"></p>
+        <a th:href="@{/{postId}(postId=${post.getId()})}">
+            <p th:text="${post.getTitle()}"></p>
+        </a>
+        <pre th:text="${post.getMessage()}"></pre>
         <p th:text="${post.getTimeAsText()}"></p>
+
     </div>
-    
+
     <form action="/" method="post">
         <div>
-            <input type="text" th:name="title" />
+            <input type="text" th:name="title"/>
         </div>
         <textarea th:name="message" rows="8" cols="100"></textarea>
         <div>

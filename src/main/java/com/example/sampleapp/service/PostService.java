@@ -19,5 +19,14 @@ public class PostService {
     public List<Post> allMessages() {
         return posts;
     }
-    
+
+    public Post get(String postId) {
+        for (Post post : posts) {
+            if (post.getId().equals(postId)) {
+                return post;
+            }
+        }
+        
+        throw new IllegalArgumentException();
+    }
 }

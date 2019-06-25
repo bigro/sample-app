@@ -5,6 +5,7 @@ import com.example.sampleapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,5 +32,13 @@ public class BoardController {
         postService.add(title, message);
         
         return "redirect:/";
+    }
+    
+    @GetMapping("{postId}")
+    public String detail(@PathVariable String postId, Model model) {
+        Post post = postService.get(postId);
+        
+        model.addAttribute("post", post);
+        return "detail";
     }
 }
