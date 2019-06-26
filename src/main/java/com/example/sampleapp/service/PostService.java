@@ -30,4 +30,13 @@ public class PostService {
         
         throw new IllegalArgumentException();
     }
+
+    public void delete(String postId) {
+        for (int i = 0; i < posts.size(); i++) {
+            if (posts.get(i).getId().equals(postId)) {
+                posts.remove(i);
+                return;
+            }
+        }
+    }
 }

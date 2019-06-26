@@ -41,4 +41,11 @@ public class BoardController {
         model.addAttribute("post", post);
         return "detail";
     }
+
+    @PostMapping("delete")
+    public String delete(@RequestParam String postId, Model model) {
+        postService.delete(postId);
+
+        return "redirect:/";
+    }
 }
