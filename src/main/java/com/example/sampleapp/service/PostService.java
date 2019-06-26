@@ -1,42 +1,32 @@
 package com.example.sampleapp.service;
 
+import com.example.sampleapp.datasource.PostDataSource;
 import com.example.sampleapp.domain.model.Post;
+import com.example.sampleapp.domain.model.PostRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PostService {
-    List<Post> posts = new ArrayList<>();
+    PostRepository postRepository = new PostDataSource();
     
     public void add(String title, String message) {
         Post post = new Post(title, message, OffsetDateTime.now(ZoneId.of("Asia/Tokyo")).toLocalDateTime());
-        posts.add(post);
+        postRepository.register(post);
     }
     
     public List<Post> allMessages() {
-        return posts;
+        return postRepository.findAll();
     }
 
     public Post get(String postId) {
-        for (Post post : posts) {
-            if (post.getId().equals(postId)) {
-                return post;
-            }
-        }
-        
-        throw new IllegalArgumentException();
+        return postRepository.get(postId);
     }
 
     public void delete(String postId) {
-        for (int i = 0; i < posts.size(); i++) {
-            if (posts.get(i).getId().equals(postId)) {
-                posts.remove(i);
-                return;
-            }
-        }
+        postRepository.delete(postId);
     }
 }
