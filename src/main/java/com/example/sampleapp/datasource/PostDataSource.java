@@ -2,10 +2,12 @@ package com.example.sampleapp.datasource;
 
 import com.example.sampleapp.domain.model.Post;
 import com.example.sampleapp.domain.model.PostRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PostDataSource implements PostRepository {
 
     List<Post> posts;

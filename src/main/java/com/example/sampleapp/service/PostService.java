@@ -11,8 +11,12 @@ import java.util.List;
 
 @Service
 public class PostService {
-    PostRepository postRepository = new PostDataSource();
-    
+    PostRepository postRepository;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
     public void add(String title, String message) {
         Post post = new Post(title, message, OffsetDateTime.now(ZoneId.of("Asia/Tokyo")).toLocalDateTime());
         postRepository.register(post);

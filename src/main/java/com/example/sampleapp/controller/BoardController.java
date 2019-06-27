@@ -1,27 +1,34 @@
 package com.example.sampleapp.controller;
 
+import com.example.sampleapp.domain.model.Account;
 import com.example.sampleapp.domain.model.Post;
+import com.example.sampleapp.service.AccountService;
 import com.example.sampleapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes(types = Account.class)
 public class BoardController {
     
     PostService postService;
+    AccountService accountService;
 
-    public BoardController(PostService postService) {
+    public BoardController(PostService postService, AccountService accountService) {
         this.postService = postService;
+        this.accountService = accountService;
     }
 
     @GetMapping("/")
-    public String show(Model model) {
+    public String show(Model model, Account account) {
+        System.out.println("account:" + account);
+        if (account.isEmpty()) {
+            return "login";
+        }
+        
         List<Post> posts = postService.allMessages();
         model.addAttribute("posts", posts);
         return "board";
@@ -45,6 +52,15 @@ public class BoardController {
     @PostMapping("delete")
     public String delete(@RequestParam String postId, Model model) {
         postService.delete(postId);
+
+        return "redirect:/";
+    }
+    
+    @PostMapping("login")
+    public String login(@RequestParam String accountName, Model model) {
+        Account account = new Account(accountName);
+        accountService.add(account);
+        model.addAttribute("account", account);
 
         return "redirect:/";
     }

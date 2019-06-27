@@ -10,6 +10,7 @@
 <body>
 
 <div>
+    <div th:text="${account.getName()}"></div>
     <div th:each="post : ${posts}">
         <a th:href="@{/{postId}(postId=${post.getId()})}">
             <p th:text="${post.getTitle()}"></p>
