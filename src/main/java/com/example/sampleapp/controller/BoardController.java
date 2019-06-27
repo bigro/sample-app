@@ -7,6 +7,7 @@ import com.example.sampleapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.List;
 
@@ -62,6 +63,12 @@ public class BoardController {
         accountService.add(account);
         model.addAttribute("account", account);
 
+        return "redirect:/";
+    }
+
+    @GetMapping("logout")
+    public String logout(SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
         return "redirect:/";
     }
 }
