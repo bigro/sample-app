@@ -27,9 +27,9 @@ public class PostDataSource implements PostRepository {
     }
 
     @Override
-    public Post get(String postId) {
+    public Post get(int postId) {
         for (Post post : posts) {
-            if (post.getId().equals(postId)) {
+            if (post.getId() == postId) {
                 return post;
             }
         }
@@ -38,9 +38,9 @@ public class PostDataSource implements PostRepository {
     }
 
     @Override
-    public void delete(String postId) {
+    public void delete(int postId) {
         for (int i = 0; i < posts.size(); i++) {
-            if (posts.get(i).getId().equals(postId)) {
+            if (posts.get(i).getId() == postId) {
                 posts.remove(i);
                 return;
             }

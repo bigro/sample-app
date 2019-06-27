@@ -47,7 +47,7 @@ public class BoardController {
     }
     
     @GetMapping("{postId}")
-    public String detail(@PathVariable String postId, Model model) {
+    public String detail(@PathVariable int postId, Model model) {
         Post post = postService.get(postId);
         
         model.addAttribute("post", post);
@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     @PostMapping("delete")
-    public String delete(@RequestParam String postId, Model model) {
+    public String delete(@RequestParam int postId, Model model) {
         postService.delete(postId);
 
         return "redirect:/";

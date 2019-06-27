@@ -1,12 +1,9 @@
 package com.example.sampleapp.service;
 
-import com.example.sampleapp.datasource.PostDataSource;
 import com.example.sampleapp.domain.model.Post;
 import com.example.sampleapp.domain.model.PostRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -26,11 +23,11 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public Post get(String postId) {
+    public Post get(int postId) {
         return postRepository.get(postId);
     }
 
-    public void delete(String postId) {
+    public void delete(int postId) {
         postRepository.delete(postId);
     }
 }

@@ -2,24 +2,26 @@ package com.example.sampleapp.domain.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 public class Post {
-    String id;
+    int id;
     String title;
     String message;
     LocalDateTime time;
     Account account;
+    
+    private static int seq = 1;
 
     public Post(String title, String message, LocalDateTime time, Account account) {
-        this.id = UUID.randomUUID().toString();
+        this.id = seq;
         this.title = title;
         this.message = message;
         this.time = time;
         this.account = account;
+        seq++;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

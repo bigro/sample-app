@@ -8,7 +8,7 @@ public interface PostRepository {
 
     List<Post> findAll();
 
-    Post get(String postId);
+    Post get(int postId);
 
-    void delete(String postId);
+    void delete(int postId);
 }
