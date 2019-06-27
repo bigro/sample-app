@@ -17,8 +17,8 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void add(String title, String message) {
-        Post post = new Post(title, message, OffsetDateTime.now(ZoneId.of("Asia/Tokyo")).toLocalDateTime());
+    public void add(Post post) {
+        
         postRepository.register(post);
     }
     

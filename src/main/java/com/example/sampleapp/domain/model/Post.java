@@ -9,12 +9,14 @@ public class Post {
     String title;
     String message;
     LocalDateTime time;
+    Account account;
 
-    public Post(String title, String message, LocalDateTime time) {
+    public Post(String title, String message, LocalDateTime time, Account account) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
         this.message = message;
         this.time = time;
+        this.account = account;
     }
 
     public String getId() {
@@ -27,6 +29,10 @@ public class Post {
 
     public String getMessage() {
         return message;
+    }
+
+    public Account getAccount() {
+        return account;
     }
 
     public String getTimeAsText() {

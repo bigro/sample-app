@@ -2,12 +2,13 @@ package com.example.sampleapp.controller;
 
 import com.example.sampleapp.domain.model.Account;
 import com.example.sampleapp.domain.model.Post;
-import com.example.sampleapp.service.AccountService;
 import com.example.sampleapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @Controller
@@ -15,11 +16,9 @@ import java.util.List;
 public class BoardController {
     
     PostService postService;
-    AccountService accountService;
 
-    public BoardController(PostService postService, AccountService accountService) {
+    public BoardController(PostService postService) {
         this.postService = postService;
-        this.accountService = accountService;
     }
 
     @GetMapping("/")
@@ -35,8 +34,14 @@ public class BoardController {
     }
     
     @PostMapping("/")
-    public String post(@RequestParam String title, @RequestParam String message, Model model) {
-        postService.add(title, message);
+    public String post(@RequestParam String title, @RequestParam String message, Account account) {
+        Post post = new Post(
+                title,
+                message,
+                OffsetDateTime.now(ZoneId.of("Asia/Tokyo")).toLocalDateTime(),
+                account
+                );
+        postService.add(post);
         
         return "redirect:/";
     }

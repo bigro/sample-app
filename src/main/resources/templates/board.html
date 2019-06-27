@@ -17,6 +17,7 @@
             <p th:text="${post.getTitle()}"></p>
         </a>
         <pre th:text="${post.getMessage()}"></pre>
+        <p th:text="${post.getAccount().getName()}"></p>
         <p th:text="${post.getTimeAsText()}"></p>
         <form action="delete" method="post">
             <input type="hidden" name="postId" th:value="${post.getId()}">
