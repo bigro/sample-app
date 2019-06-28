@@ -14,7 +14,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes(types = Account.class)
 public class LoginController {
     
-    AccountService accountService;
+    private AccountService accountService;
 
     public LoginController(AccountService accountService) {
         this.accountService = accountService;

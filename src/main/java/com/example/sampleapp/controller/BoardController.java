@@ -15,7 +15,7 @@ import java.util.List;
 @SessionAttributes(types = Account.class)
 public class BoardController {
     
-    PostService postService;
+    private PostService postService;
 
     public BoardController(PostService postService) {
         this.postService = postService;

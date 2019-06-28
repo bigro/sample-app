@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class PostDataSource implements PostRepository {
 
-    List<Post> posts;
+    private List<Post> posts;
 
     public PostDataSource() {
         this.posts = new ArrayList<>();

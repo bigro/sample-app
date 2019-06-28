@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Post {
-    int id;
-    String title;
-    String message;
-    LocalDateTime time;
-    Account account;
+    private int id;
+    private String title;
+    private String message;
+    private LocalDateTime time;
+    private Account account;
     
     private static int seq = 1;
 

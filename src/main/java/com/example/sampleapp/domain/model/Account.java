@@ -1,7 +1,7 @@
 package com.example.sampleapp.domain.model;
 
 public class Account {
-    String name;
+    private String name;
 
     public Account(String name) {
         this.name = name;

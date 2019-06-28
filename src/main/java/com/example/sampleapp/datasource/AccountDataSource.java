@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class AccountDataSource implements AccountRepository {
 
-    List<Account> accounts = new ArrayList<>();
+    private List<Account> accounts = new ArrayList<>();
 
     @Override
     public void register(Account account) {
