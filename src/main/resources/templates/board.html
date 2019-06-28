@@ -10,15 +10,15 @@
 <body>
 
 <div>
-    <div th:text="${account.getName()}"></div>
-    <a th:href="@{/logout}">ログアウト</a>
+    <div th:text="${account.getName()}">ユーザー</div>
+    <a href="#" th:href="@{/logout}">ログアウト</a>
     <div th:each="post : ${posts}">
         <a th:href="@{/{postId}(postId=${post.getId()})}">
-            <p th:text="${post.getTitle()}"></p>
+            <p th:text="${post.getTitle()}">タイトル</p>
         </a>
-        <pre th:text="${post.getMessage()}"></pre>
-        <p th:text="${post.getAccount().getName()}"></p>
-        <p th:text="${post.getTimeAsText()}"></p>
+        <pre th:text="${post.getMessage()}">投稿メッセージ</pre>
+        <p th:text="${post.getAccount().getName()}">ユーザー</p>
+        <p th:text="${post.getTimeAsText()}">2019/06/28 11:00:00</p>
         <form action="delete" method="post">
             <input type="hidden" name="postId" th:value="${post.getId()}">
             <button th:if="${account.getName() == post.getAccount().getName()}" type="submit">削除</button>
