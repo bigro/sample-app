@@ -21,7 +21,7 @@
         <p th:text="${post.getTimeAsText()}"></p>
         <form action="delete" method="post">
             <input type="hidden" name="postId" th:value="${post.getId()}">
-            <button type="submit">削除</button>
+            <button th:if="${account.getName() == post.getAccount().getName()}" type="submit">削除</button>
         </form>
 
     </div>
