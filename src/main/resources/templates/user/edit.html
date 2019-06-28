@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>プロフィール編集</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div>
+
+    <form th:action="@{/user/edit}" method="post">
+        <div>
+            <label>アカウント名：
+                <input type="text" name="accountName" th:value="${account.getName()}"/>
+            </label>
+        </div>
+        <div>
+            <label>姓：
+                <input type="text" name="lastName"/>
+            </label>
+        </div>
+        <div>
+            <label>名：
+                <input type="text" name="firstName"/>
+            </label>
+        </div>
+        <div>
+            <label>性別：
+                <select type="text" name="gender">
+                    <option>男</option>
+                    <option>女</option>
+                    <option>その他</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>自己紹介：
+                <textarea name="introduce" rows="8" cols="100"></textarea>
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="更新する"/>
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

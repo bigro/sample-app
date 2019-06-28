@@ -12,6 +12,7 @@
 <div>
     <div th:text="${account.getName()}">ユーザー</div>
     <a href="#" th:href="@{/logout}">ログアウト</a>
+    <a href="#" th:href="@{/user/edit}">プロフィール編集</a>
     <div th:each="post : ${posts}">
         <a th:href="@{/{postId}(postId=${post.getId()})}">
             <p th:text="${post.getTitle()}">タイトル</p>
