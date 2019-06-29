@@ -3,6 +3,9 @@ package com.example.sampleapp.domain.model;
 public class Account {
     private String name;
 
+    public Account() {
+    }
+
     public Account(String name) {
         this.name = name;
     }
@@ -17,5 +20,9 @@ public class Account {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

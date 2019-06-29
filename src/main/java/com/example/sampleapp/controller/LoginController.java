@@ -7,31 +7,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
-@SessionAttributes(types = Account.class)
 public class LoginController {
     
     private AccountService accountService;
+    private HttpSession session;
 
-    public LoginController(AccountService accountService) {
+    public LoginController(AccountService accountService, HttpSession session) {
         this.accountService = accountService;
+        this.session = session;
     }
-    
+
     @PostMapping("login")
     public String login(@RequestParam String accountName, Model model) {
         Account account = new Account(accountName);
         accountService.add(account);
+        session.setAttribute("account", account);
         model.addAttribute("account", account);
 
         return "redirect:/";
     }
 
     @GetMapping("logout")
-    public String logout(SessionStatus sessionStatus) {
-        sessionStatus.setComplete();
+    public String logout() {
+        session.removeAttribute("account");
         return "redirect:/";
     }
 }
